@@ -1,4 +1,4 @@
-package com.kadkins.countries;
+package com.kingadkins.webcountries;
 
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -13,6 +13,7 @@ public class Country
 
     public Country(String name, int population, int landMass, int medianAge)
     {
+        this.id = counter.incrementAndGet();
         this.name = name;
         this.population = population;
         this.landMass = landMass;
@@ -44,7 +45,7 @@ public class Country
         this.population = population;
     }
 
-    public int getLandMass()
+    public long getLandMass()
     {
         return landMass;
     }

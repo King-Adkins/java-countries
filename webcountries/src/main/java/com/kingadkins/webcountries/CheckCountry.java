@@ -1,4 +1,4 @@
-package com.kadkins.countries;
+package com.kingadkins.webcountries;
 
 public interface CheckCountry
 {

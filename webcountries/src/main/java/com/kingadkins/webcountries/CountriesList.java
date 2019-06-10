@@ -1,4 +1,4 @@
-package com.kadkins.countries;
+package com.kingadkins.webcountries;
 
 import java.util.ArrayList;
 
@@ -6,7 +6,8 @@ public class CountriesList
 {
     public ArrayList<Country> countryList = new ArrayList<>();
 
-    public CountriesList() {
+    public CountriesList()
+    {
         countryList.add(new Country("China",1420062022,9388211,39));
         countryList.add(new Country("India",1368737513,2973190,28));
         countryList.add(new Country("U.S.",329093110,9147420,38));
@@ -210,7 +211,7 @@ public class CountriesList
         countryList.add(new Country("Seychelles",95702,460,36));
     }
 
-    public Country findCountry(CheckCountry checkCountry) {
+    public  Country findCountry(CheckCountry checkCountry) {
         for (Country c : countryList) {
             if (checkCountry.test(c)) {
                 return c;
@@ -228,4 +229,5 @@ public class CountriesList
         }
         return countries;
     }
+
 }

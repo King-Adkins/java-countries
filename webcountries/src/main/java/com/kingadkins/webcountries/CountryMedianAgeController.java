@@ -1,11 +1,10 @@
-package com.kadkins.countries;
-
+package com.kingadkins.webcountries;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -18,10 +17,9 @@ public class CountryMedianAgeController
     // age/age/{age}
     @RequestMapping(value = "/age/{age}",
                     produces = {"application/json"})
-    public ResponseEntity<?> getCountriesWithMedianAgeEqualOrGreaterThanGiven(@PathVariable
-                                                                                      int age)
+    public ResponseEntity<?> getCountriesWithMedianAgeEqualOrGreaterThanGiven(@PathVariable int age)
     {
-        ArrayList<Country> countries = CountriesApplication.list.findCountries(c -> (c.getMedianAge() >= age));
+        ArrayList<Country> countries = WebcountriesApplication.list.findCountries(c -> (c.getMedianAge() >= age));
         return new ResponseEntity<>(countries, HttpStatus.OK);
     }
 
@@ -29,8 +27,8 @@ public class CountryMedianAgeController
     @RequestMapping(value = "/min",
                     produces = {"application/json"})
     public ResponseEntity<?> getCountryWithLowestMedianAge() {
-        CountriesApplication.list.countryList.sort(Comparator.comparingInt(Country::getMedianAge));
-        return new ResponseEntity<>(CountriesApplication.list.countryList.get(0), HttpStatus.OK);
+        WebcountriesApplication.list.countryList.sort(Comparator.comparingInt(Country::getMedianAge));
+        return new ResponseEntity<>(WebcountriesApplication.list.countryList.get(0), HttpStatus.OK);
     }
 
 
@@ -38,7 +36,7 @@ public class CountryMedianAgeController
     @RequestMapping(value = "/max",
                     produces = {"application/json"})
     public ResponseEntity<?> getCountryWithHighestMedianAge() {
-        CountriesApplication.list.countryList.sort(Comparator.comparingInt(Country::getMedianAge));
-        return new ResponseEntity<>(CountriesApplication.list.countryList.get(CountriesApplication.list.countryList.size() - 1), HttpStatus.OK);
+        WebcountriesApplication.list.countryList.sort(Comparator.comparingInt(Country::getMedianAge));
+        return new ResponseEntity<>(WebcountriesApplication.list.countryList.get(WebcountriesApplication.list.countryList.size() - 1), HttpStatus.OK);
     }
 }
